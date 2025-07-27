@@ -5,254 +5,679 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Emon Howlader - Portfolio</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
   <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet" />
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
   <style>
-    html {
+    :root {
+      --primary: #6366f1;
+      --primary-dark: #4f46e5;
+      --secondary: #0ea5e9;
+      --dark: #0f172a;
+    }
+    
+    * {
       scroll-behavior: smooth;
     }
-    /* Subtle shadow and scale on project hover */
-    .project-card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.5);
+    
+    body {
+      background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+      color: #f1f5f9;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     }
+    
+    .section {
+      padding: 6rem 0;
+    }
+    
+    .gradient-text {
+      background: linear-gradient(90deg, var(--primary) 0%, var(--secondary) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    .skill-badge {
+      background: rgba(99, 102, 241, 0.1);
+      border: 1px solid rgba(99, 102, 241, 0.3);
+      transition: all 0.3s ease;
+    }
+    
+    .skill-badge:hover {
+      transform: translateY(-3px);
+      background: rgba(99, 102, 241, 0.2);
+      box-shadow: 0 4px 15px rgba(99, 102, 241, 0.2);
+    }
+    
     .project-card {
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      background: linear-gradient(145deg, #1e293b 0%, #0f172a 100%);
+      border: 1px solid rgba(99, 102, 241, 0.2);
+      border-radius: 16px;
+      overflow: hidden;
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      height: 100%;
+    }
+    
+    .project-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+      border-color: rgba(99, 102, 241, 0.4);
+    }
+    
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      height: 100%;
+      width: 4px;
+      background: linear-gradient(to bottom, var(--primary), var(--secondary));
+    }
+    
+    .contact-input {
+      background: rgba(30, 41, 59, 0.5);
+      border: 1px solid rgba(99, 102, 241, 0.2);
+      transition: all 0.3s ease;
+    }
+    
+    .contact-input:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
+    }
+    
+    .social-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 50px;
+      height: 50px;
+      border-radius: 12px;
+      background: rgba(99, 102, 241, 0.1);
+      color: var(--primary);
+      transition: all 0.3s ease;
+    }
+    
+    .social-icon:hover {
+      background: var(--primary);
+      color: white;
+      transform: translateY(-5px);
+    }
+    
+    .nav-link {
+      position: relative;
+      padding: 0.5rem 0;
+    }
+    
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--primary);
+      transition: width 0.3s ease;
+    }
+    
+    .nav-link:hover::after {
+      width: 100%;
+    }
+    
+    .scroll-top {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      width: 50px;
+      height: 50px;
+      border-radius: 12px;
+      background: var(--primary);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(20px);
+      transition: all 0.4s ease;
+      z-index: 100;
+      box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
+    }
+    
+    .scroll-top.active {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+    
+    .scroll-top:hover {
+      background: var(--primary-dark);
+      transform: translateY(-5px);
     }
   </style>
 </head>
-<body class="bg-gray-900 text-white font-sans">
+<body class="antialiased">
+  
+  <!-- Scroll to top button -->
+  <div class="scroll-top">
+    <i class="fas fa-arrow-up"></i>
+  </div>
 
   <!-- Navbar -->
-  <nav class="p-6 bg-gray-800 fixed w-full top-0 z-50 shadow-md">
-    <div class="container mx-auto flex justify-between items-center">
-      <h1 class="text-2xl font-bold select-none">Emon Howlader</h1>
-      <ul class="flex space-x-6 text-sm md:text-base">
-        <li><a href="#about" class="hover:text-blue-400 focus:outline-none focus:text-blue-400 transition">About</a></li>
-        <li><a href="#skills" class="hover:text-blue-400 focus:outline-none focus:text-blue-400 transition">Skills</a></li>
-        <li><a href="#projects" class="hover:text-blue-400 focus:outline-none focus:text-blue-400 transition">Projects</a></li>
-        <li><a href="#experience" class="hover:text-blue-400 focus:outline-none focus:text-blue-400 transition">Experience</a></li>
-        <li><a href="#contact" class="hover:text-blue-400 focus:outline-none focus:text-blue-400 transition">Contact</a></li>
+  <nav class="p-6 fixed w-full top-0 z-50 backdrop-blur-md bg-opacity-50 bg-gray-900 border-b border-gray-800">
+    <div class="container mx-auto max-w-6xl flex flex-col md:flex-row justify-between items-center">
+      <a href="#" class="text-2xl font-bold flex items-center">
+        <span class="text-indigo-400">E</span>mon
+        <span class="ml-1 text-indigo-300">Howlader</span>
+      </a>
+      
+      <ul class="flex space-x-8 mt-4 md:mt-0">
+        <li><a href="#about" class="nav-link">About</a></li>
+        <li><a href="#skills" class="nav-link">Skills</a></li>
+        <li><a href="#projects" class="nav-link">Projects</a></li>
+        <li><a href="#experience" class="nav-link">Experience</a></li>
+        <li><a href="#contact" class="nav-link">Contact</a></li>
       </ul>
     </div>
   </nav>
 
   <!-- Hero Section -->
-  <section class="h-screen flex items-center justify-center bg-gray-800 pt-16">
-    <div class="text-center animate__animated animate__fadeIn">
-      <h1 class="text-5xl font-bold leading-tight">Hi, I'm <span class="text-blue-400">Emon Howlader</span></h1>
-      <p class="mt-4 text-xl text-gray-300">Web Developer | CSE Graduate</p>
-      <a href="#about" class="mt-8 inline-block bg-blue-500 text-white px-8 py-3 rounded-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400 transition">
-        Learn More
-      </a>
+  <section class="min-h-screen flex items-center justify-center relative overflow-hidden">
+    <div class="absolute inset-0 z-0">
+      <div class="absolute top-20 left-20 w-96 h-96 rounded-full bg-indigo-900 opacity-20 blur-3xl"></div>
+      <div class="absolute bottom-20 right-20 w-80 h-80 rounded-full bg-cyan-900 opacity-20 blur-3xl"></div>
+    </div>
+    
+    <div class="container mx-auto px-6 max-w-6xl relative z-10">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div class="text-center lg:text-left">
+          <h1 class="text-4xl md:text-6xl font-bold mb-4">
+            Hi, I'm <span class="gradient-text">Emon Howlader</span>
+          </h1>
+          <p class="text-xl text-slate-300 mb-8 max-w-lg mx-auto lg:mx-0">
+            Web Developer & AI Enthusiast crafting digital experiences that make an impact
+          </p>
+          <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+            <a href="#projects" class="px-8 py-3 bg-indigo-600 hover:bg-indigo-700 rounded-lg font-medium transition-all duration-300 transform hover:-translate-y-1">
+              View My Work
+            </a>
+            <a href="#contact" class="px-8 py-3 bg-slate-800 hover:bg-slate-700 rounded-lg font-medium border border-slate-700 transition-all duration-300 transform hover:-translate-y-1">
+              Contact Me
+            </a>
+          </div>
+          
+          <div class="mt-12 flex justify-center lg:justify-start space-x-6">
+            <a href="https://www.linkedin.com/in/iamemonhowlader" class="social-icon">
+              <i class="fab fa-linkedin-in text-xl"></i>
+            </a>
+            <a href="https://github.com/iamemonhowlader" class="social-icon">
+              <i class="fab fa-github text-xl"></i>
+            </a>
+            <a href="#" class="social-icon">
+              <i class="fab fa-twitter text-xl"></i>
+            </a>
+          </div>
+        </div>
+        
+        <div class="flex justify-center">
+          <div class="relative">
+            <div class="w-64 h-64 md:w-80 md:h-80 bg-gradient-to-br from-indigo-500 to-cyan-500 rounded-full overflow-hidden border-4 border-slate-800 shadow-2xl">
+              <img src="https://github.com/iamemonhowlader.png" alt="Emon Howlader" class="w-full h-full object-cover" />
+            </div>
+            <div class="absolute -bottom-4 -right-4 w-24 h-24 bg-indigo-600 rounded-lg flex items-center justify-center p-4 shadow-xl">
+              <span class="text-white font-bold text-center">CSE Graduate</span>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
   <!-- About Section -->
-  <section id="about" class="py-20 bg-gray-700">
+  <section id="about" class="section">
     <div class="container mx-auto px-6 max-w-6xl">
-      <h2 class="text-3xl font-bold text-center mb-12">About Me</h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-        <div class="animate__animated animate__fadeInLeft">
-          <img src="images/Screenshot 2025-02-09 163329.png" alt="Emon Howlader" class="rounded-lg shadow-lg max-w-full mx-auto" />
+      <h2 class="text-3xl md:text-4xl font-bold text-center mb-16">
+        About <span class="gradient-text">Me</span>
+      </h2>
+      
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div data-aos="fade-right">
+          <div class="bg-slate-800 border border-slate-700 rounded-2xl p-1 inline-block">
+            <img src="https://images.unsplash.com/photo-1543269865-cbf427effbad?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80" alt="Emon Howlader" class="rounded-xl w-full max-w-lg" />
+          </div>
         </div>
-        <div class="text-lg space-y-6 animate__animated animate__fadeInRight text-gray-200">
-          <p>Hello! I'm Emon Howlader, a passionate and dedicated Web Developer with a Bachelor's degree in Computer Science and Engineering from Primeasia University. I specialize in building modern, responsive, and user-friendly websites using the latest technologies. With a strong foundation in both front-end and back-end development, I thrive on creating seamless and interactive web experiences that delight users and solve real-world problems.</p>
-          <p>My expertise includes HTML, CSS, JavaScript, and frameworks like React for front-end development. On the back-end, I have hands-on experience with PHP and the Laravel framework, where I’ve built robust, scalable, and secure web applications. I’m also proficient in working with databases like MySQL and integrating RESTful APIs to ensure smooth communication between the front-end and back-end.</p>
-          <p>Recently, I’ve ventured into the exciting world of Artificial Intelligence (AI), exploring tools and frameworks to build intelligent systems. I’m fascinated by how AI can transform industries and enhance user experiences, and I’m actively working on projects that combine my web development skills with AI capabilities.</p>
-          <p>I’m a lifelong learner, always eager to stay updated with the latest trends and technologies in the tech industry. Whether it’s crafting beautiful user interfaces, optimizing server-side logic, or experimenting with AI models, I’m driven by a passion for innovation and problem-solving.</p>
+        
+        <div data-aos="fade-left">
+          <h3 class="text-2xl font-bold mb-6">
+            Crafting Digital Experiences with Code & Creativity
+          </h3>
+          
+          <div class="space-y-4 text-slate-300">
+            <p>
+              Hello! I'm Emon Howlader, a passionate and dedicated Web Developer with a Bachelor's degree in Computer Science and Engineering from Primeasia University. I specialize in building modern, responsive, and user-friendly websites using the latest technologies.
+            </p>
+            
+            <p>
+              With a strong foundation in both front-end and back-end development, I thrive on creating seamless and interactive web experiences that delight users and solve real-world problems.
+            </p>
+            
+            <p>
+              My expertise includes HTML, CSS, JavaScript, and frameworks like React for front-end development. On the back-end, I have hands-on experience with PHP and the Laravel framework, where I've built robust, scalable, and secure web applications.
+            </p>
+            
+            <div class="pt-4">
+              <a href="#contact" class="inline-flex items-center text-indigo-400 hover:text-indigo-300 font-medium">
+                Let's Connect
+                <i class="fas fa-arrow-right ml-2 text-sm"></i>
+              </a>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
   <!-- Skills Section -->
-  <section id="skills" class="py-20 bg-gray-900">
+  <section id="skills" class="section bg-slate-900">
     <div class="container mx-auto px-6 max-w-6xl">
-      <h2 class="text-4xl font-bold text-center mb-12">Skills</h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-        <!-- Skill Card Template -->
-        <div class="bg-gradient-to-br from-blue-600 to-indigo-700 p-6 rounded-lg shadow-lg">
-          <div class="flex items-center justify-between mb-4">
-            <p class="text-xl font-semibold">HTML</p>
-            <span class="text-sm bg-gray-800 px-3 py-1 rounded-full">Expert</span>
+      <h2 class="text-3xl md:text-4xl font-bold text-center mb-6">
+        Technical <span class="gradient-text">Skills</span>
+      </h2>
+      <p class="text-center text-slate-400 max-w-2xl mx-auto mb-16">
+        I've honed a diverse set of technical skills to build modern, performant web applications
+      </p>
+      
+      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
+        <div class="skill-badge flex flex-col items-center justify-center p-6 rounded-xl">
+          <div class="text-4xl text-indigo-400 mb-3">
+            <i class="fab fa-html5"></i>
           </div>
-          <div class="w-full bg-gray-800 rounded-full h-3 mb-4">
-            <div class="bg-white h-3 rounded-full" style="width: 95%;"></div>
-          </div>
-          <p class="text-gray-200 text-sm">I have a strong command of HTML, crafting semantic, accessible, and SEO-friendly web pages.</p>
+          <h3 class="font-bold">HTML5</h3>
+          <div class="mt-2 w-12 h-1 bg-indigo-600 rounded-full"></div>
         </div>
-
-        <div class="bg-gradient-to-br from-purple-600 to-pink-700 p-6 rounded-lg shadow-lg">
-          <div class="flex items-center justify-between mb-4">
-            <p class="text-xl font-semibold">CSS</p>
-            <span class="text-sm bg-gray-800 px-3 py-1 rounded-full">Advanced</span>
+        
+        <div class="skill-badge flex flex-col items-center justify-center p-6 rounded-xl">
+          <div class="text-4xl text-indigo-400 mb-3">
+            <i class="fab fa-css3-alt"></i>
           </div>
-          <div class="w-full bg-gray-800 rounded-full h-3 mb-4">
-            <div class="bg-white h-3 rounded-full" style="width: 90%;"></div>
-          </div>
-          <p class="text-gray-200 text-sm">Skilled in styling with CSS, including responsive designs using Flexbox and Grid, ensuring cross-browser compatibility.</p>
+          <h3 class="font-bold">CSS3</h3>
+          <div class="mt-2 w-12 h-1 bg-indigo-600 rounded-full"></div>
         </div>
-
-        <div class="bg-gradient-to-br from-yellow-600 to-orange-700 p-6 rounded-lg shadow-lg">
-          <div class="flex items-center justify-between mb-4">
-            <p class="text-xl font-semibold">JavaScript</p>
-            <span class="text-sm bg-gray-800 px-3 py-1 rounded-full">Advanced</span>
+        
+        <div class="skill-badge flex flex-col items-center justify-center p-6 rounded-xl">
+          <div class="text-4xl text-indigo-400 mb-3">
+            <i class="fab fa-js"></i>
           </div>
-          <div class="w-full bg-gray-800 rounded-full h-3 mb-4">
-            <div class="bg-white h-3 rounded-full" style="width: 85%;"></div>
-          </div>
-          <p class="text-gray-200 text-sm">Proficient in JavaScript, building interactive web applications and implementing logic using modern JavaScript features.</p>
+          <h3 class="font-bold">JavaScript</h3>
+          <div class="mt-2 w-12 h-1 bg-indigo-600 rounded-full"></div>
         </div>
-
-        <div class="bg-gradient-to-br from-green-600 to-teal-700 p-6 rounded-lg shadow-lg">
-          <div class="flex items-center justify-between mb-4">
-            <p class="text-xl font-semibold">React</p>
-            <span class="text-sm bg-gray-800 px-3 py-1 rounded-full">Intermediate</span>
+        
+        <div class="skill-badge flex flex-col items-center justify-center p-6 rounded-xl">
+          <div class="text-4xl text-indigo-400 mb-3">
+            <i class="fab fa-react"></i>
           </div>
-          <div class="w-full bg-gray-800 rounded-full h-3 mb-4">
-            <div class="bg-white h-3 rounded-full" style="width: 80%;"></div>
-          </div>
-          <p class="text-gray-200 text-sm">Experience with React, building reusable components and working with hooks for efficient state management.</p>
+          <h3 class="font-bold">React</h3>
+          <div class="mt-2 w-10 h-1 bg-indigo-600 rounded-full"></div>
         </div>
-
-        <div class="bg-gradient-to-br from-red-600 to-pink-700 p-6 rounded-lg shadow-lg">
-          <div class="flex items-center justify-between mb-4">
-            <p class="text-xl font-semibold">AI & Machine Learning</p>
-            <span class="text-sm bg-gray-800 px-3 py-1 rounded-full">Intermediate</span>
+        
+        <div class="skill-badge flex flex-col items-center justify-center p-6 rounded-xl">
+          <div class="text-4xl text-indigo-400 mb-3">
+            <i class="fab fa-laravel"></i>
           </div>
-          <div class="w-full bg-gray-800 rounded-full h-3 mb-4">
-            <div class="bg-white h-3 rounded-full" style="width: 75%;"></div>
-          </div>
-          <p class="text-gray-200 text-sm">Familiar with AI and machine learning algorithms. Applied AI techniques in building recommendation systems and NLP projects.</p>
+          <h3 class="font-bold">Laravel</h3>
+          <div class="mt-2 w-12 h-1 bg-indigo-600 rounded-full"></div>
         </div>
-
-        <div class="bg-gradient-to-br from-indigo-600 to-blue-700 p-6 rounded-lg shadow-lg">
-          <div class="flex items-center justify-between mb-4">
-            <p class="text-xl font-semibold">Laravel (API Development)</p>
-            <span class="text-sm bg-gray-800 px-3 py-1 rounded-full">Advanced</span>
+        
+        <div class="skill-badge flex flex-col items-center justify-center p-6 rounded-xl">
+          <div class="text-4xl text-indigo-400 mb-3">
+            <i class="fas fa-robot"></i>
           </div>
-          <div class="w-full bg-gray-800 rounded-full h-3 mb-4">
-            <div class="bg-white h-3 rounded-full" style="width: 85%;"></div>
-          </div>
-          <p class="text-gray-200 text-sm">Experienced in building RESTful APIs using Laravel, focusing on efficient data handling, authentication, and security for web applications.</p>
+          <h3 class="font-bold">AI & ML</h3>
+          <div class="mt-2 w-10 h-1 bg-indigo-600 rounded-full"></div>
         </div>
       </div>
     </div>
   </section>
 
   <!-- Projects Section -->
-  <section id="projects" class="py-20 bg-gray-700">
+  <section id="projects" class="section">
     <div class="container mx-auto px-6 max-w-6xl">
-      <h2 class="text-3xl font-bold text-center mb-12">Projects</h2>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-        <div class="project-card bg-gray-800 p-6 rounded-lg shadow-lg animate__animated animate__fadeInUp">
-          <h3 class="text-xl font-bold mb-4">Her Power Project (Govt.)</h3>
-          <p>A government-led initiative focused on empowering women through education and skill development in technology. This program provides training in digital skills, coding, and entrepreneurship, equipping women with the knowledge to thrive in the tech industry. Through interactive courses and mentorship, participants gain hands-on experience to build successful careers in the digital world.</p>
+      <h2 class="text-3xl md:text-4xl font-bold text-center mb-6">
+        Featured <span class="gradient-text">Projects</span>
+      </h2>
+      <p class="text-center text-slate-400 max-w-2xl mx-auto mb-16">
+        Check out some of my recent work that showcases my skills and expertise
+      </p>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="project-card" data-aos="fade-up">
+          <div class="h-48 overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80" alt="Her Power Project" class="w-full h-full object-cover" />
+          </div>
+          <div class="p-6">
+            <div class="flex justify-between items-start mb-4">
+              <h3 class="text-xl font-bold">Her Power Project (Govt.)</h3>
+              <span class="text-xs bg-indigo-900 text-indigo-200 px-2 py-1 rounded">Government</span>
+            </div>
+            <p class="text-slate-400 mb-6">
+              Empowering women through technology education and skill development programs.
+            </p>
+            <div class="flex flex-wrap gap-2">
+              <span class="text-xs bg-slate-800 text-slate-300 px-3 py-1 rounded-full">Laravel</span>
+              <span class="text-xs bg-slate-800 text-slate-300 px-3 py-1 rounded-full">React</span>
+              <span class="text-xs bg-slate-800 text-slate-300 px-3 py-1 rounded-full">MySQL</span>
+            </div>
+          </div>
         </div>
-        <div class="project-card bg-gray-800 p-6 rounded-lg shadow-lg animate__animated animate__fadeInUp" style="animation-delay: 0.2s;">
-          <h3 class="text-xl font-bold mb-4">BCS Confidence - Your Ultimate BCS Preparation Companion</h3>
-          <p>An interactive and feature-rich platform designed to empower BCS aspirants with valuable resources, strategic study plans, and engaging animations to enhance learning. Built with cutting-edge technology for a seamless and intuitive experience.</p>
+        
+        <div class="project-card" data-aos="fade-up" data-aos-delay="100">
+          <div class="h-48 overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1586769852836-bc069f19e1b6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80" alt="BCS Confidence" class="w-full h-full object-cover" />
+          </div>
+          <div class="p-6">
+            <div class="flex justify-between items-start mb-4">
+              <h3 class="text-xl font-bold">BCS Confidence</h3>
+              <span class="text-xs bg-cyan-900 text-cyan-200 px-2 py-1 rounded">Education</span>
+            </div>
+            <p class="text-slate-400 mb-6">
+              Ultimate BCS preparation companion with resources and study plans.
+            </p>
+            <div class="flex flex-wrap gap-2">
+              <span class="text-xs bg-slate-800 text-slate-300 px-3 py-1 rounded-full">JavaScript</span>
+              <span class="text-xs bg-slate-800 text-slate-300 px-3 py-1 rounded-full">PHP</span>
+              <span class="text-xs bg-slate-800 text-slate-300 px-3 py-1 rounded-full">MySQL</span>
+            </div>
+          </div>
         </div>
-        <div class="project-card bg-gray-800 p-6 rounded-lg shadow-lg animate__animated animate__fadeInUp" style="animation-delay: 0.4s;">
-          <h3 class="text-xl font-bold mb-4">E-commerce Platform - Seamless Shopping Experience</h3>
-          <p>A dynamic e-commerce platform built with Node.js, Laravel, and MySQL. This platform delivers smooth navigation, secure transactions, and robust product management features, all optimized for the best user experience across devices.</p>
-        </div>
-        <div class="project-card bg-gray-800 p-6 rounded-lg shadow-lg animate__animated animate__fadeInUp" style="animation-delay: 0.6s;">
-          <h3 class="text-xl font-bold mb-4">AI for Microplastic Detection</h3>
-          <p>An AI-powered system designed to detect and analyze microplastics in environmental samples using machine learning and computer vision techniques.</p>
+        
+        <div class="project-card" data-aos="fade-up" data-aos-delay="200">
+          <div class="h-48 overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1607082350899-7e105aa886ae?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80" alt="E-commerce Platform" class="w-full h-full object-cover" />
+          </div>
+          <div class="p-6">
+            <div class="flex justify-between items-start mb-4">
+              <h3 class="text-xl font-bold">E-commerce Platform</h3>
+              <span class="text-xs bg-amber-900 text-amber-200 px-2 py-1 rounded">E-commerce</span>
+            </div>
+            <p class="text-slate-400 mb-6">
+              Seamless shopping experience with secure transactions and product management.
+            </p>
+            <div class="flex flex-wrap gap-2">
+              <span class="text-xs bg-slate-800 text-slate-300 px-3 py-1 rounded-full">React</span>
+              <span class="text-xs bg-slate-800 text-slate-300 px-3 py-1 rounded-full">Node.js</span>
+              <span class="text-xs bg-slate-800 text-slate-300 px-3 py-1 rounded-full">MongoDB</span>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
   <!-- Experience Section -->
-  <section id="experience" class="py-20 bg-gray-800">
+  <section id="experience" class="section bg-slate-900">
     <div class="container mx-auto px-6 max-w-6xl">
-      <h2 class="text-3xl font-bold text-center mb-12">Experience</h2>
-      <div class="space-y-10">
-        <div class="bg-gray-700 p-6 rounded-lg shadow-lg animate__animated animate__fadeInLeft">
-          <h3 class="text-xl font-bold">Web Developer Intern</h3>
-          <p class="mt-2 text-gray-300 font-semibold">TechKnowGram Limited | Sept 2022 - Jun 2023</p>
-          <p class="mt-4 text-gray-200">Collaborated with a team of developers to design and implement dynamic user interfaces. Focused on building responsive, high-performance front-end applications using React and Tailwind CSS, improving user engagement and site performance.</p>
-        </div>
-        <div class="bg-gray-700 p-6 rounded-lg shadow-lg animate__animated animate__fadeInLeft" style="animation-delay: 0.2s;">
-          <h3 class="text-xl font-bold">Web Developer</h3>
-          <p class="mt-2 text-gray-300 font-semibold">TechKnowGram Limited | Jun 2023 - Sept 2024</p>
-          <p class="mt-4 text-gray-200">Led front-end and back-end development for various web applications. Utilized React and Tailwind CSS for the frontend and Laravel for building efficient back-end services. Focused on optimizing website performance and ensuring cross-browser compatibility for seamless user experiences.</p>
-        </div>
-        <div class="bg-gray-700 p-6 rounded-lg shadow-lg animate__animated animate__fadeInRight" style="animation-delay: 0.4s;">
-          <h3 class="text-xl font-bold">Freelance Web Developer</h3>
-          <p class="mt-2 text-gray-300 font-semibold">Softevence Limited | Sept 2024 - Present</p>
-          <p class="mt-4 text-gray-200">Build custom websites for a diverse range of clients, leveraging cutting-edge technologies to create modern, responsive, and visually appealing web solutions. Additionally, working on AI-powered projects to integrate smart functionalities into web applications, enhancing user interaction and automation.</p>
+      <h2 class="text-3xl md:text-4xl font-bold text-center mb-6">
+        Work <span class="gradient-text">Experience</span>
+      </h2>
+      <p class="text-center text-slate-400 max-w-2xl mx-auto mb-16">
+        My professional journey in the tech industry
+      </p>
+      
+      <div class="max-w-3xl mx-auto">
+        <div class="relative pl-8 timeline-item">
+          <div class="mb-12 relative pl-8" data-aos="fade-right">
+            <div class="absolute left-0 top-0 w-4 h-4 rounded-full bg-indigo-500"></div>
+            <div class="bg-slate-800 border border-slate-700 rounded-xl p-6">
+              <div class="flex flex-wrap justify-between items-center mb-4">
+                <h3 class="text-xl font-bold">Web Developer Intern</h3>
+                <span class="text-indigo-400 text-sm font-medium">Sept 2022 - Jun 2023</span>
+              </div>
+              <h4 class="text-slate-400 font-medium mb-3">TechKnowGram Limited</h4>
+              <p class="text-slate-300">
+                Collaborated with a team of developers to design and implement dynamic user interfaces. Focused on building responsive, high-performance front-end applications using React and Tailwind CSS.
+              </p>
+            </div>
+          </div>
+          
+          <div class="mb-12 relative pl-8" data-aos="fade-right" data-aos-delay="100">
+            <div class="absolute left-0 top-0 w-4 h-4 rounded-full bg-indigo-500"></div>
+            <div class="bg-slate-800 border border-slate-700 rounded-xl p-6">
+              <div class="flex flex-wrap justify-between items-center mb-4">
+                <h3 class="text-xl font-bold">Web Developer</h3>
+                <span class="text-indigo-400 text-sm font-medium">Jun 2023 - Sept 2024</span>
+              </div>
+              <h4 class="text-slate-400 font-medium mb-3">TechKnowGram Limited</h4>
+              <p class="text-slate-300">
+                Led front-end and back-end development for various web applications. Utilized React and Tailwind CSS for the frontend and Laravel for building efficient back-end services.
+              </p>
+            </div>
+          </div>
+          
+          <div class="relative pl-8" data-aos="fade-right" data-aos-delay="200">
+            <div class="absolute left-0 top-0 w-4 h-4 rounded-full bg-indigo-500"></div>
+            <div class="bg-slate-800 border border-slate-700 rounded-xl p-6">
+              <div class="flex flex-wrap justify-between items-center mb-4">
+                <h3 class="text-xl font-bold">Freelance Web Developer</h3>
+                <span class="text-indigo-400 text-sm font-medium">Sept 2024 - Present</span>
+              </div>
+              <h4 class="text-slate-400 font-medium mb-3">Softevence Limited</h4>
+              <p class="text-slate-300">
+                Build custom websites for diverse clients, leveraging cutting-edge technologies. Working on AI-powered projects to integrate smart functionalities into web applications.
+              </p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
   <!-- Contact Section -->
-  <section id="contact" class="py-20 bg-gray-700">
-    <div class="container mx-auto px-6 max-w-lg">
-      <h2 class="text-3xl font-bold text-center mb-8">Contact Me</h2>
-      <form id="contactForm" class="space-y-6">
-        <input type="text" id="name" placeholder="Your Name" class="w-full p-3 rounded-lg bg-gray-800 text-white focus:outline-none focus:ring-2 focus:ring-blue-400" required aria-label="Your Name" />
-        <input type="email" id="email" placeholder="Your Email" class="w-full p-3 rounded-lg bg-gray-800 text-white focus:outline-none focus:ring-2 focus:ring-blue-400" required aria-label="Your Email" />
-        <textarea id="message" placeholder="Your Message" class="w-full p-3 rounded-lg bg-gray-800 text-white h-32 resize-none focus:outline-none focus:ring-2 focus:ring-blue-400" required aria-label="Your Message"></textarea>
-        <button type="submit" class="w-full bg-blue-500 text-white px-6 py-3 rounded-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400 transition">Send Message</button>
-        <p id="formMessage" class="mt-2 text-center text-sm"></p>
-      </form>
+  <section id="contact" class="section">
+    <div class="container mx-auto px-6 max-w-4xl">
+      <h2 class="text-3xl md:text-4xl font-bold text-center mb-6">
+        Get In <span class="gradient-text">Touch</span>
+      </h2>
+      <p class="text-center text-slate-400 max-w-2xl mx-auto mb-16">
+        Have a project in mind or want to discuss opportunities? I'd love to hear from you!
+      </p>
+      
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+        <div data-aos="fade-right">
+          <h3 class="text-xl font-bold mb-6">Contact Information</h3>
+          
+          <div class="space-y-6">
+            <div class="flex items-start">
+              <div class="flex-shrink-0 w-12 h-12 rounded-lg bg-indigo-900 flex items-center justify-center text-indigo-400">
+                <i class="fas fa-envelope"></i>
+              </div>
+              <div class="ml-4">
+                <h4 class="font-medium text-slate-300">Email</h4>
+                <p class="text-indigo-400">contact@emonhowlader.com</p>
+              </div>
+            </div>
+            
+            <div class="flex items-start">
+              <div class="flex-shrink-0 w-12 h-12 rounded-lg bg-indigo-900 flex items-center justify-center text-indigo-400">
+                <i class="fas fa-map-marker-alt"></i>
+              </div>
+              <div class="ml-4">
+                <h4 class="font-medium text-slate-300">Location</h4>
+                <p class="text-slate-400">Dhaka, Bangladesh</p>
+              </div>
+            </div>
+            
+            <div class="flex items-start">
+              <div class="flex-shrink-0 w-12 h-12 rounded-lg bg-indigo-900 flex items-center justify-center text-indigo-400">
+                <i class="fas fa-phone-alt"></i>
+              </div>
+              <div class="ml-4">
+                <h4 class="font-medium text-slate-300">Phone</h4>
+                <p class="text-slate-400">+880 1234 567890</p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="mt-12">
+            <h3 class="text-xl font-bold mb-6">Follow Me</h3>
+            <div class="flex space-x-4">
+              <a href="#" class="social-icon">
+                <i class="fab fa-linkedin-in"></i>
+              </a>
+              <a href="#" class="social-icon">
+                <i class="fab fa-github"></i>
+              </a>
+              <a href="#" class="social-icon">
+                <i class="fab fa-twitter"></i>
+              </a>
+              <a href="#" class="social-icon">
+                <i class="fab fa-instagram"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <div data-aos="fade-left">
+          <form id="contactForm" class="space-y-6">
+            <div>
+              <label for="name" class="block text-slate-300 mb-2">Full Name</label>
+              <input type="text" id="name" class="contact-input w-full p-4 rounded-lg focus:outline-none" placeholder="Enter your name" required>
+            </div>
+            
+            <div>
+              <label for="email" class="block text-slate-300 mb-2">Email Address</label>
+              <input type="email" id="email" class="contact-input w-full p-4 rounded-lg focus:outline-none" placeholder="Enter your email" required>
+            </div>
+            
+            <div>
+              <label for="message" class="block text-slate-300 mb-2">Your Message</label>
+              <textarea id="message" rows="5" class="contact-input w-full p-4 rounded-lg focus:outline-none" placeholder="How can I help you?" required></textarea>
+            </div>
+            
+            <button type="submit" class="w-full bg-gradient-to-r from-indigo-600 to-cyan-600 hover:from-indigo-700 hover:to-cyan-700 text-white font-medium py-4 px-6 rounded-lg transition-all duration-300 transform hover:-translate-y-1">
+              Send Message
+            </button>
+            
+            <p id="formMessage" class="text-center text-sm mt-4"></p>
+          </form>
+        </div>
+      </div>
     </div>
   </section>
 
   <!-- Footer -->
-  <footer class="py-6 bg-gray-800 text-center text-gray-400 select-none">
-    <p>&copy; 2025 Emon Howlader. All rights reserved.</p>
+  <footer class="py-12 border-t border-slate-800">
+    <div class="container mx-auto px-6 max-w-6xl">
+      <div class="flex flex-col md:flex-row justify-between items-center">
+        <div class="text-2xl font-bold mb-6 md:mb-0">
+          <span class="text-indigo-400">E</span>mon
+          <span class="text-indigo-300">Howlader</span>
+        </div>
+        
+        <ul class="flex flex-wrap justify-center space-x-6 mb-6 md:mb-0">
+          <li><a href="#about" class="text-slate-400 hover:text-indigo-400 transition">About</a></li>
+          <li><a href="#skills" class="text-slate-400 hover:text-indigo-400 transition">Skills</a></li>
+          <li><a href="#projects" class="text-slate-400 hover:text-indigo-400 transition">Projects</a></li>
+          <li><a href="#experience" class="text-slate-400 hover:text-indigo-400 transition">Experience</a></li>
+          <li><a href="#contact" class="text-slate-400 hover:text-indigo-400 transition">Contact</a></li>
+        </ul>
+        
+        <div class="flex space-x-4">
+          <a href="#" class="text-slate-500 hover:text-indigo-400 transition">
+            <i class="fab fa-linkedin-in"></i>
+          </a>
+          <a href="#" class="text-slate-500 hover:text-indigo-400 transition">
+            <i class="fab fa-github"></i>
+          </a>
+          <a href="#" class="text-slate-500 hover:text-indigo-400 transition">
+            <i class="fab fa-twitter"></i>
+          </a>
+        </div>
+      </div>
+      
+      <div class="border-t border-slate-800 mt-10 pt-8 text-center text-slate-500">
+        <p>&copy; 2025 Emon Howlader. All rights reserved.</p>
+      </div>
+    </div>
   </footer>
 
-  <!-- Scroll Reveal Animation -->
-  <script src="https://unpkg.com/scrollreveal"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>
-    ScrollReveal().reveal('.animate__animated', {
-      delay: 200,
-      distance: '50px',
-      origin: 'bottom',
-      easing: 'ease-in-out',
-      interval: 150,
-      cleanup: true,
+    // Initialize AOS
+    document.addEventListener("DOMContentLoaded", function() {
+      AOS.init({
+        duration: 800,
+        once: true
+      });
     });
-
-    // Contact form basic validation and fake submission
+    
+    // Scroll to top button
+    const scrollTopBtn = document.querySelector('.scroll-top');
+    
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 500) {
+        scrollTopBtn.classList.add('active');
+      } else {
+        scrollTopBtn.classList.remove('active');
+      }
+    });
+    
+    scrollTopBtn.addEventListener('click', () => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+    
+    // Contact form submission
     const form = document.getElementById('contactForm');
     const formMessage = document.getElementById('formMessage');
+    
     form.addEventListener('submit', e => {
       e.preventDefault();
       formMessage.textContent = '';
+      
       const name = form.name.value.trim();
       const email = form.email.value.trim();
       const message = form.message.value.trim();
-
+      
       if (!name || !email || !message) {
         formMessage.textContent = 'Please fill out all fields.';
         formMessage.className = 'text-red-400';
         return;
       }
-
-      // Basic email regex check
+      
+      // Basic email validation
       const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
       if (!emailRegex.test(email)) {
         formMessage.textContent = 'Please enter a valid email address.';
         formMessage.className = 'text-red-400';
         return;
       }
-
+      
       // Simulate sending message
-      formMessage.textContent = 'Sending...';
-      formMessage.className = 'text-blue-400';
-
+      formMessage.textContent = 'Sending your message...';
+      formMessage.className = 'text-indigo-400';
+      
       setTimeout(() => {
-        formMessage.textContent = 'Thank you for reaching out! I will get back to you soon.';
+        formMessage.textContent = 'Thank you for your message! I will get back to you soon.';
         formMessage.className = 'text-green-400';
         form.reset();
       }, 1500);
+    });
+    
+    // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          window.scrollTo({
+            top: target.offsetTop - 80,
+            behavior: 'smooth'
+          });
+        }
+      });
     });
   </script>
 </body>
