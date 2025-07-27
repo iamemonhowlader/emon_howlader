@@ -1,57 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Emon Howlader - Portfolio</title>
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet" />
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+    /* Subtle shadow and scale on project hover */
+    .project-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.5);
+    }
+    .project-card {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+  </style>
 </head>
 <body class="bg-gray-900 text-white font-sans">
+
   <!-- Navbar -->
-  <nav class="p-6 bg-gray-800 fixed w-full top-0 z-50">
+  <nav class="p-6 bg-gray-800 fixed w-full top-0 z-50 shadow-md">
     <div class="container mx-auto flex justify-between items-center">
-      <h1 class="text-2xl font-bold">Emon Howlader</h1>
-      <ul class="flex space-x-6">
-        <li><a href="#about" class="hover:text-blue-400">About</a></li>
-        <li><a href="#skills" class="hover:text-blue-400">Skills</a></li>
-        <li><a href="#projects" class="hover:text-blue-400">Projects</a></li>
-        <li><a href="#experience" class="hover:text-blue-400">Experience</a></li>
-        <li><a href="#contact" class="hover:text-blue-400">Contact</a></li>
+      <h1 class="text-2xl font-bold select-none">Emon Howlader</h1>
+      <ul class="flex space-x-6 text-sm md:text-base">
+        <li><a href="#about" class="hover:text-blue-400 focus:outline-none focus:text-blue-400 transition">About</a></li>
+        <li><a href="#skills" class="hover:text-blue-400 focus:outline-none focus:text-blue-400 transition">Skills</a></li>
+        <li><a href="#projects" class="hover:text-blue-400 focus:outline-none focus:text-blue-400 transition">Projects</a></li>
+        <li><a href="#experience" class="hover:text-blue-400 focus:outline-none focus:text-blue-400 transition">Experience</a></li>
+        <li><a href="#contact" class="hover:text-blue-400 focus:outline-none focus:text-blue-400 transition">Contact</a></li>
       </ul>
     </div>
   </nav>
 
   <!-- Hero Section -->
-  <section class="h-screen flex items-center justify-center bg-gray-800">
+  <section class="h-screen flex items-center justify-center bg-gray-800 pt-16">
     <div class="text-center animate__animated animate__fadeIn">
-      <h1 class="text-5xl font-bold">Hi, I'm Emon Howlader</h1>
-      <p class="mt-4 text-xl">Web Developer | CSE Graduate</p>
-      <a href="#about" class="mt-8 inline-block bg-blue-500 text-white px-6 py-3 rounded-lg hover:bg-blue-600">Learn More</a>
+      <h1 class="text-5xl font-bold leading-tight">Hi, I'm <span class="text-blue-400">Emon Howlader</span></h1>
+      <p class="mt-4 text-xl text-gray-300">Web Developer | CSE Graduate</p>
+      <a href="#about" class="mt-8 inline-block bg-blue-500 text-white px-8 py-3 rounded-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400 transition">
+        Learn More
+      </a>
     </div>
   </section>
 
   <!-- About Section -->
   <section id="about" class="py-20 bg-gray-700">
-    <div class="container mx-auto px-6">
-      <h2 class="text-3xl font-bold text-center mb-8">About Me</h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+    <div class="container mx-auto px-6 max-w-6xl">
+      <h2 class="text-3xl font-bold text-center mb-12">About Me</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
         <div class="animate__animated animate__fadeInLeft">
-          <img src="images/Screenshot 2025-02-09 163329.png" alt="Emon Howlader" style="max-width: 75%;" class="rounded-lg shadow-lg">
+          <img src="images/Screenshot 2025-02-09 163329.png" alt="Emon Howlader" class="rounded-lg shadow-lg max-w-full mx-auto" />
         </div>
-        <div class="animate__animated animate__fadeInRight">
-          <p class="text-lg">
-            Hello! I'm Emon Howlader, a passionate and dedicated Web Developer with a Bachelor's degree in Computer Science and Engineering from Primeasia University. I specialize in building modern, responsive, and user-friendly websites using the latest technologies. With a strong foundation in both front-end and back-end development, I thrive on creating seamless and interactive web experiences that delight users and solve real-world problems.
-          </p>
-          <p class="mt-4 text-lg">
-            My expertise includes HTML, CSS, JavaScript, and frameworks like React for front-end development. On the back-end, I have hands-on experience with PHP and the Laravel framework, where I’ve built robust, scalable, and secure web applications. I’m also proficient in working with databases like MySQL and integrating RESTful APIs to ensure smooth communication between the front-end and back-end.
-          </p>
-          <p class="mt-4 text-lg">
-            Recently, I’ve ventured into the exciting world of Artificial Intelligence (AI), exploring tools and frameworks to build intelligent systems. I’m fascinated by how AI can transform industries and enhance user experiences, and I’m actively working on projects that combine my web development skills with AI capabilities.
-          </p>
-          <p class="mt-4 text-lg">
-            I’m a lifelong learner, always eager to stay updated with the latest trends and technologies in the tech industry. Whether it’s crafting beautiful user interfaces, optimizing server-side logic, or experimenting with AI models, I’m driven by a passion for innovation and problem-solving.
-          </p>
+        <div class="text-lg space-y-6 animate__animated animate__fadeInRight text-gray-200">
+          <p>Hello! I'm Emon Howlader, a passionate and dedicated Web Developer with a Bachelor's degree in Computer Science and Engineering from Primeasia University. I specialize in building modern, responsive, and user-friendly websites using the latest technologies. With a strong foundation in both front-end and back-end development, I thrive on creating seamless and interactive web experiences that delight users and solve real-world problems.</p>
+          <p>My expertise includes HTML, CSS, JavaScript, and frameworks like React for front-end development. On the back-end, I have hands-on experience with PHP and the Laravel framework, where I’ve built robust, scalable, and secure web applications. I’m also proficient in working with databases like MySQL and integrating RESTful APIs to ensure smooth communication between the front-end and back-end.</p>
+          <p>Recently, I’ve ventured into the exciting world of Artificial Intelligence (AI), exploring tools and frameworks to build intelligent systems. I’m fascinated by how AI can transform industries and enhance user experiences, and I’m actively working on projects that combine my web development skills with AI capabilities.</p>
+          <p>I’m a lifelong learner, always eager to stay updated with the latest trends and technologies in the tech industry. Whether it’s crafting beautiful user interfaces, optimizing server-side logic, or experimenting with AI models, I’m driven by a passion for innovation and problem-solving.</p>
         </div>
       </div>
     </div>
@@ -59,14 +67,14 @@
 
   <!-- Skills Section -->
   <section id="skills" class="py-20 bg-gray-900">
-    <div class="container mx-auto px-6">
-      <h2 class="text-4xl font-bold text-center text-white mb-12">Skills</h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        <!-- HTML Skill -->
+    <div class="container mx-auto px-6 max-w-6xl">
+      <h2 class="text-4xl font-bold text-center mb-12">Skills</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+        <!-- Skill Card Template -->
         <div class="bg-gradient-to-br from-blue-600 to-indigo-700 p-6 rounded-lg shadow-lg">
           <div class="flex items-center justify-between mb-4">
-            <p class="text-xl font-semibold text-white">HTML</p>
-            <span class="text-sm text-gray-200 bg-gray-800 px-3 py-1 rounded-full">Expert</span>
+            <p class="text-xl font-semibold">HTML</p>
+            <span class="text-sm bg-gray-800 px-3 py-1 rounded-full">Expert</span>
           </div>
           <div class="w-full bg-gray-800 rounded-full h-3 mb-4">
             <div class="bg-white h-3 rounded-full" style="width: 95%;"></div>
@@ -74,11 +82,10 @@
           <p class="text-gray-200 text-sm">I have a strong command of HTML, crafting semantic, accessible, and SEO-friendly web pages.</p>
         </div>
 
-        <!-- CSS Skill -->
         <div class="bg-gradient-to-br from-purple-600 to-pink-700 p-6 rounded-lg shadow-lg">
           <div class="flex items-center justify-between mb-4">
-            <p class="text-xl font-semibold text-white">CSS</p>
-            <span class="text-sm text-gray-200 bg-gray-800 px-3 py-1 rounded-full">Advanced</span>
+            <p class="text-xl font-semibold">CSS</p>
+            <span class="text-sm bg-gray-800 px-3 py-1 rounded-full">Advanced</span>
           </div>
           <div class="w-full bg-gray-800 rounded-full h-3 mb-4">
             <div class="bg-white h-3 rounded-full" style="width: 90%;"></div>
@@ -86,11 +93,10 @@
           <p class="text-gray-200 text-sm">Skilled in styling with CSS, including responsive designs using Flexbox and Grid, ensuring cross-browser compatibility.</p>
         </div>
 
-        <!-- JavaScript Skill -->
         <div class="bg-gradient-to-br from-yellow-600 to-orange-700 p-6 rounded-lg shadow-lg">
           <div class="flex items-center justify-between mb-4">
-            <p class="text-xl font-semibold text-white">JavaScript</p>
-            <span class="text-sm text-gray-200 bg-gray-800 px-3 py-1 rounded-full">Advanced</span>
+            <p class="text-xl font-semibold">JavaScript</p>
+            <span class="text-sm bg-gray-800 px-3 py-1 rounded-full">Advanced</span>
           </div>
           <div class="w-full bg-gray-800 rounded-full h-3 mb-4">
             <div class="bg-white h-3 rounded-full" style="width: 85%;"></div>
@@ -98,11 +104,10 @@
           <p class="text-gray-200 text-sm">Proficient in JavaScript, building interactive web applications and implementing logic using modern JavaScript features.</p>
         </div>
 
-        <!-- React Skill -->
         <div class="bg-gradient-to-br from-green-600 to-teal-700 p-6 rounded-lg shadow-lg">
           <div class="flex items-center justify-between mb-4">
-            <p class="text-xl font-semibold text-white">React</p>
-            <span class="text-sm text-gray-200 bg-gray-800 px-3 py-1 rounded-full">Intermediate</span>
+            <p class="text-xl font-semibold">React</p>
+            <span class="text-sm bg-gray-800 px-3 py-1 rounded-full">Intermediate</span>
           </div>
           <div class="w-full bg-gray-800 rounded-full h-3 mb-4">
             <div class="bg-white h-3 rounded-full" style="width: 80%;"></div>
@@ -110,11 +115,10 @@
           <p class="text-gray-200 text-sm">Experience with React, building reusable components and working with hooks for efficient state management.</p>
         </div>
 
-        <!-- AI Skill -->
         <div class="bg-gradient-to-br from-red-600 to-pink-700 p-6 rounded-lg shadow-lg">
           <div class="flex items-center justify-between mb-4">
-            <p class="text-xl font-semibold text-white">AI & Machine Learning</p>
-            <span class="text-sm text-gray-200 bg-gray-800 px-3 py-1 rounded-full">Intermediate</span>
+            <p class="text-xl font-semibold">AI & Machine Learning</p>
+            <span class="text-sm bg-gray-800 px-3 py-1 rounded-full">Intermediate</span>
           </div>
           <div class="w-full bg-gray-800 rounded-full h-3 mb-4">
             <div class="bg-white h-3 rounded-full" style="width: 75%;"></div>
@@ -122,11 +126,10 @@
           <p class="text-gray-200 text-sm">Familiar with AI and machine learning algorithms. Applied AI techniques in building recommendation systems and NLP projects.</p>
         </div>
 
-        <!-- Laravel Skill -->
         <div class="bg-gradient-to-br from-indigo-600 to-blue-700 p-6 rounded-lg shadow-lg">
           <div class="flex items-center justify-between mb-4">
-            <p class="text-xl font-semibold text-white">Laravel (API Development)</p>
-            <span class="text-sm text-gray-200 bg-gray-800 px-3 py-1 rounded-full">Advanced</span>
+            <p class="text-xl font-semibold">Laravel (API Development)</p>
+            <span class="text-sm bg-gray-800 px-3 py-1 rounded-full">Advanced</span>
           </div>
           <div class="w-full bg-gray-800 rounded-full h-3 mb-4">
             <div class="bg-white h-3 rounded-full" style="width: 85%;"></div>
@@ -137,105 +140,71 @@
     </div>
   </section>
 
-
   <!-- Projects Section -->
   <section id="projects" class="py-20 bg-gray-700">
-    <div class="container mx-auto px-6">
-      <h2 class="text-3xl font-bold text-center mb-8">Projects</h2>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <div class="bg-gray-800 p-6 rounded-lg shadow-lg animate__animated animate__fadeInUp">
-            <h3 class="text-xl font-bold">Her Power Project (Govt.)</h3>
-            <p class="mt-4">A government-led initiative focused on empowering women through education and skill development in technology. This program provides training in digital skills, coding, and entrepreneurship, equipping women with the knowledge to thrive in the tech industry. Through interactive courses and mentorship, participants gain hands-on experience to build successful careers in the digital world.</p>
-          </div>
-          <div class="bg-gray-800 p-6 rounded-lg shadow-lg animate__animated animate__fadeInUp">
-            <h3 class="text-xl font-bold">BCS Confidence - Your Ultimate BCS Preparation Companion</h3>
-            <p class="mt-4">An interactive and feature-rich platform designed to empower BCS aspirants with valuable resources, strategic study plans, and engaging animations to enhance learning. Built with cutting-edge technology for a seamless and intuitive experience.</p>
-          </div>
-          <div class="bg-gray-800 p-6 rounded-lg shadow-lg animate__animated animate__fadeInUp">
-            <h3 class="text-xl font-bold">E-commerce Platform - Seamless Shopping Experience</h3>
-            <p class="mt-4">A dynamic e-commerce platform built with Node.js, Laravel, and MySQL. This platform delivers smooth navigation, secure transactions, and robust product management features, all optimized for the best user experience across devices.</p>
-          </div>
-        <div class="bg-gray-800 p-6 rounded-lg shadow-lg animate__animated animate__fadeInUp">
-            <h3 class="text-xl font-bold">AI for Microplastic Detection</h3>
-            <p class="mt-4">An AI-powered system designed to detect and analyze microplastics in environmental samples using machine learning and computer vision techniques.</p>
-          </div>
+    <div class="container mx-auto px-6 max-w-6xl">
+      <h2 class="text-3xl font-bold text-center mb-12">Projects</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="project-card bg-gray-800 p-6 rounded-lg shadow-lg animate__animated animate__fadeInUp">
+          <h3 class="text-xl font-bold mb-4">Her Power Project (Govt.)</h3>
+          <p>A government-led initiative focused on empowering women through education and skill development in technology. This program provides training in digital skills, coding, and entrepreneurship, equipping women with the knowledge to thrive in the tech industry. Through interactive courses and mentorship, participants gain hands-on experience to build successful careers in the digital world.</p>
+        </div>
+        <div class="project-card bg-gray-800 p-6 rounded-lg shadow-lg animate__animated animate__fadeInUp" style="animation-delay: 0.2s;">
+          <h3 class="text-xl font-bold mb-4">BCS Confidence - Your Ultimate BCS Preparation Companion</h3>
+          <p>An interactive and feature-rich platform designed to empower BCS aspirants with valuable resources, strategic study plans, and engaging animations to enhance learning. Built with cutting-edge technology for a seamless and intuitive experience.</p>
+        </div>
+        <div class="project-card bg-gray-800 p-6 rounded-lg shadow-lg animate__animated animate__fadeInUp" style="animation-delay: 0.4s;">
+          <h3 class="text-xl font-bold mb-4">E-commerce Platform - Seamless Shopping Experience</h3>
+          <p>A dynamic e-commerce platform built with Node.js, Laravel, and MySQL. This platform delivers smooth navigation, secure transactions, and robust product management features, all optimized for the best user experience across devices.</p>
+        </div>
+        <div class="project-card bg-gray-800 p-6 rounded-lg shadow-lg animate__animated animate__fadeInUp" style="animation-delay: 0.6s;">
+          <h3 class="text-xl font-bold mb-4">AI for Microplastic Detection</h3>
+          <p>An AI-powered system designed to detect and analyze microplastics in environmental samples using machine learning and computer vision techniques.</p>
+        </div>
+      </div>
     </div>
   </section>
 
   <!-- Experience Section -->
   <section id="experience" class="py-20 bg-gray-800">
-    <div class="container mx-auto px-6">
-      <h2 class="text-3xl font-bold text-center mb-8">Experience</h2>
-      <div class="space-y-6">
+    <div class="container mx-auto px-6 max-w-6xl">
+      <h2 class="text-3xl font-bold text-center mb-12">Experience</h2>
+      <div class="space-y-10">
         <div class="bg-gray-700 p-6 rounded-lg shadow-lg animate__animated animate__fadeInLeft">
           <h3 class="text-xl font-bold">Web Developer Intern</h3>
-          <p class="mt-2">TechKnowGram Limited | Sept 2022 - Jun 2023</p>
-          <p class="mt-4">Collaborated with a team of developers to design and implement dynamic user interfaces. Focused on building responsive, high-performance front-end applications using React and Tailwind CSS, improving user engagement and site performance.</p>
+          <p class="mt-2 text-gray-300 font-semibold">TechKnowGram Limited | Sept 2022 - Jun 2023</p>
+          <p class="mt-4 text-gray-200">Collaborated with a team of developers to design and implement dynamic user interfaces. Focused on building responsive, high-performance front-end applications using React and Tailwind CSS, improving user engagement and site performance.</p>
         </div>
-        <div class="bg-gray-700 p-6 rounded-lg shadow-lg animate__animated animate__fadeInLeft">
+        <div class="bg-gray-700 p-6 rounded-lg shadow-lg animate__animated animate__fadeInLeft" style="animation-delay: 0.2s;">
           <h3 class="text-xl font-bold">Web Developer</h3>
-          <p class="mt-2">TechKnowGram Limited | Jun 2023 - Sept 2024</p>
-          <p class="mt-4">Led front-end and back-end development for various web applications. Utilized React and Tailwind CSS for the frontend and Laravel for building efficient back-end services. Focused on optimizing website performance and ensuring cross-browser compatibility for seamless user experiences.</p>
+          <p class="mt-2 text-gray-300 font-semibold">TechKnowGram Limited | Jun 2023 - Sept 2024</p>
+          <p class="mt-4 text-gray-200">Led front-end and back-end development for various web applications. Utilized React and Tailwind CSS for the frontend and Laravel for building efficient back-end services. Focused on optimizing website performance and ensuring cross-browser compatibility for seamless user experiences.</p>
         </div>
-        <div class="bg-gray-700 p-6 rounded-lg shadow-lg animate__animated animate__fadeInRight">
+        <div class="bg-gray-700 p-6 rounded-lg shadow-lg animate__animated animate__fadeInRight" style="animation-delay: 0.4s;">
           <h3 class="text-xl font-bold">Freelance Web Developer</h3>
-          <p class="mt-2">Softevence Limited | Sept 2024 - Present</p>
-          <p class="mt-4">Build custom websites for a diverse range of clients, leveraging cutting-edge technologies to create modern, responsive, and visually appealing web solutions. Additionally, working on AI-powered projects to integrate smart functionalities into web applications, enhancing user interaction and automation.</p>
+          <p class="mt-2 text-gray-300 font-semibold">Softevence Limited | Sept 2024 - Present</p>
+          <p class="mt-4 text-gray-200">Build custom websites for a diverse range of clients, leveraging cutting-edge technologies to create modern, responsive, and visually appealing web solutions. Additionally, working on AI-powered projects to integrate smart functionalities into web applications, enhancing user interaction and automation.</p>
         </div>
       </div>
     </div>
   </section>
-
-
-  <!-- Team Meet Section -->
-  <section id="team" class="py-20 bg-gray-700">
-    <div class="container mx-auto px-6">
-      <h2 class="text-3xl font-bold text-center mb-8">Team Meet</h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        <!-- Collaborative Projects -->
-        <div class="bg-gray-800 p-6 rounded-lg shadow-lg animate__animated animate__fadeInUp">
-          <img src="path-to-image1.jpg" alt="Collaborative Projects" class="w-20 h-20 rounded-full mx-auto mb-4">
-          <h3 class="text-xl font-bold text-center">Collaborative Projects</h3>
-          <p class="mt-4">I thrive in team environments and have worked on collaborative projects where I contributed to both front-end and back-end development. My ability to communicate effectively and adapt to team dynamics ensures smooth project execution.</p>
-        </div>
-        <!-- Agile Methodology -->
-        <div class="bg-gray-800 p-6 rounded-lg shadow-lg animate__animated animate__fadeInUp">
-          <img src="path-to-image2.jpg" alt="Agile Methodology" class="w-20 h-20 rounded-full mx-auto mb-4">
-          <h3 class="text-xl font-bold text-center">Agile Methodology</h3>
-          <p class="mt-4">I’m experienced in working with Agile methodologies, participating in daily stand-ups, sprint planning, and retrospectives. This approach helps deliver high-quality results within tight deadlines.</p>
-        </div>
-        <!-- Team Leadership -->
-        <div class="bg-gray-800 p-6 rounded-lg shadow-lg animate__animated animate__fadeInUp">
-          <img src="path-to-image3.jpg" alt="Team Leadership" class="w-20 h-20 rounded-full mx-auto mb-4">
-          <h3 class="text-xl font-bold text-center">Team Leadership</h3>
-          <p class="mt-4">I’ve led small teams on projects, ensuring tasks are delegated efficiently and team members are supported. My leadership style focuses on collaboration, transparency, and continuous improvement.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
 
   <!-- Contact Section -->
   <section id="contact" class="py-20 bg-gray-700">
-    <div class="container mx-auto px-6">
+    <div class="container mx-auto px-6 max-w-lg">
       <h2 class="text-3xl font-bold text-center mb-8">Contact Me</h2>
-      <form class="max-w-lg mx-auto">
-        <div class="mb-4">
-          <input type="text" placeholder="Your Name" class="w-full p-3 rounded-lg bg-gray-800 text-white">
-        </div>
-        <div class="mb-4">
-          <input type="email" placeholder="Your Email" class="w-full p-3 rounded-lg bg-gray-800 text-white">
-        </div>
-        <div class="mb-4">
-          <textarea placeholder="Your Message" class="w-full p-3 rounded-lg bg-gray-800 text-white"></textarea>
-        </div>
-        <button type="submit" class="w-full bg-blue-500 text-white px-6 py-3 rounded-lg hover:bg-blue-600">Send Message</button>
+      <form id="contactForm" class="space-y-6">
+        <input type="text" id="name" placeholder="Your Name" class="w-full p-3 rounded-lg bg-gray-800 text-white focus:outline-none focus:ring-2 focus:ring-blue-400" required aria-label="Your Name" />
+        <input type="email" id="email" placeholder="Your Email" class="w-full p-3 rounded-lg bg-gray-800 text-white focus:outline-none focus:ring-2 focus:ring-blue-400" required aria-label="Your Email" />
+        <textarea id="message" placeholder="Your Message" class="w-full p-3 rounded-lg bg-gray-800 text-white h-32 resize-none focus:outline-none focus:ring-2 focus:ring-blue-400" required aria-label="Your Message"></textarea>
+        <button type="submit" class="w-full bg-blue-500 text-white px-6 py-3 rounded-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400 transition">Send Message</button>
+        <p id="formMessage" class="mt-2 text-center text-sm"></p>
       </form>
     </div>
   </section>
 
   <!-- Footer -->
-  <footer class="py-6 bg-gray-800 text-center">
+  <footer class="py-6 bg-gray-800 text-center text-gray-400 select-none">
     <p>&copy; 2025 Emon Howlader. All rights reserved.</p>
   </footer>
 
@@ -243,10 +212,47 @@
   <script src="https://unpkg.com/scrollreveal"></script>
   <script>
     ScrollReveal().reveal('.animate__animated', {
-      delay: 300,
+      delay: 200,
       distance: '50px',
       origin: 'bottom',
       easing: 'ease-in-out',
+      interval: 150,
+      cleanup: true,
+    });
+
+    // Contact form basic validation and fake submission
+    const form = document.getElementById('contactForm');
+    const formMessage = document.getElementById('formMessage');
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+      formMessage.textContent = '';
+      const name = form.name.value.trim();
+      const email = form.email.value.trim();
+      const message = form.message.value.trim();
+
+      if (!name || !email || !message) {
+        formMessage.textContent = 'Please fill out all fields.';
+        formMessage.className = 'text-red-400';
+        return;
+      }
+
+      // Basic email regex check
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(email)) {
+        formMessage.textContent = 'Please enter a valid email address.';
+        formMessage.className = 'text-red-400';
+        return;
+      }
+
+      // Simulate sending message
+      formMessage.textContent = 'Sending...';
+      formMessage.className = 'text-blue-400';
+
+      setTimeout(() => {
+        formMessage.textContent = 'Thank you for reaching out! I will get back to you soon.';
+        formMessage.className = 'text-green-400';
+        form.reset();
+      }, 1500);
     });
   </script>
 </body>
